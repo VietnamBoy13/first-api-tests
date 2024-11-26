@@ -38,9 +38,22 @@ class TestCase:
     def find_animal(self, animal_id: str) -> dict:
         """
         Метод ищет животное по id
+
         :param animal_id: id животного
         :return: информация о животном
         """
         url = 'pet/' + str(animal_id)
         self.response = self.request.send_request('get', url)
+        return self.response.json()
+
+    def remove_animal(self, animal_id: str) -> dict:
+        """
+        Метод удаляет животное по id
+
+        :param animal_id: id животного
+        :return: информация о животном
+        """
+
+        url = 'pet/' + str(animal_id)
+        self.response = self.request.send_request('delete', url)
         return self.response.json()
